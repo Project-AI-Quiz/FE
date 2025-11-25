@@ -1,0 +1,93 @@
+body {
+    background: linear-gradient(to bottom right, #1f2937, #111827);
+    color: white;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+    margin: auto;
+    padding: 40px;
+    background-color: #1f2937;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+h1,
+h2,
+h3 {
+    color: #60a5fa;
+}
+
+button {
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+button:hover:not(:disabled) {
+    background-color: #4338ca;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #374151;
+    border-radius: 5px;
+    background-color: #374151;
+    color: white;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: #60a5fa;
+}
+
+.progress-bar {
+    height: 10px;
+    background-color: #3b82f6;
+    border-radius: 5px;
+}
+
+.error-message {
+    color: #f87171;
+    background-color: rgba(248, 113, 113, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.success-message {
+    color: #34d399;
+    background-color: rgba(52, 211, 153, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+}
