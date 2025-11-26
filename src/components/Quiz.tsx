@@ -177,6 +177,7 @@ const Quiz: React.FC = () => {
                         ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white border-green-600 shadow-lg'
                         : 'bg-white text-green-700 border-green-200 hover:border-green-400'
                     }`}
+                    disabled
                   >
                     <FaEdit className="text-lg" /> Topik Manual
                   </button>
@@ -187,9 +188,10 @@ const Quiz: React.FC = () => {
                         ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white border-green-600 shadow-lg'
                         : 'bg-white text-green-700 border-green-200 hover:border-green-400'
                     }`}
+                    disabled
                   >
                     <FaFile className="text-lg" /> File Upload
-                  </button>
+                  </button> 
                 </div>
               </div>
 

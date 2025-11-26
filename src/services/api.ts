@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { GenerateQuizResponse, QuizQuestion } from '../types/quiz';
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://be-agama.vercel.app/api';
 
 export const generateQuiz = async (
   topic: string,
