@@ -1,5 +1,6 @@
 body {
-    background: linear-gradient(to bottom right, #1f2937, #111827);
+    /* background: linear-gradient(to bottom right, #1f2937, #111827); */
+    background: #deedda;
     color: white;
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -20,19 +21,36 @@ body {
     width: 100%;
     margin: auto;
     padding: 40px;
-    background-color: #1f2937;
+    /* background-color: #1f2937; */
+    background-color: #FFFFFF;
     border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 1000px rgba(0, 0, 0, 0.2);
+}
+
+.title-container {
+    /* width: 50%;
+    margin: 0 auto; */
+    text-align: center;
+    margin-top: -50px;
+}
+
+.logo-container {
+    margin: 0 auto;
+    text-align: center;
 }
 
 h1,
 h2,
 h3 {
-    color: #60a5fa;
+    color: #419423;
+}
+
+p {
+    color: #000000;
 }
 
 button {
-    background-color: #4f46e5;
+    background-color: #419423;
     color: white;
     border: none;
     padding: 15px 30px;
@@ -44,7 +62,7 @@ button {
 }
 
 button:hover:not(:disabled) {
-    background-color: #4338ca;
+    background-color: #337a1a;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
 }
@@ -90,4 +108,18 @@ textarea:focus {
     background-color: rgba(52, 211, 153, 0.1);
     padding: 10px;
     border-radius: 5px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input::placeholder {
+    text-align: center;
 }

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { generateQuiz } from '../services/api';
-import { QuizQuestion } from '../types/quiz';
+import { QuizQuestion } from '../types/quiz';  
+import Logo from '../assets/Logo_Agama.svg';
+
 
 type QuizState = 'input' | 'playing' | 'finished';
 
@@ -108,30 +110,64 @@ const Quiz: React.FC = () => {
       'Etika, moral dan akhlak dalam islam',
       'Peran agama dalam menghadapi permasalahan jihad, hijrah, literasi agama'
     ];
-    const presetCounts = [5,10,15,20,25];
+    const presetCounts = [5, 10, 15, 20, 25];
     return (
       <div className="container">
-        <h1>Pilih Materi Kuis</h1>
-        <p>By Kelompok 5</p>
+        <div className='logo-container'>
+          <img 
+            src={Logo} 
+            alt="Logo" 
+            style={{ width: '128px', height: '128px' }}
+          />
+        </div>
+        <div className='title-container'>
+          <span
+            style={{
+              fontSize: '32px',
+            }}
+          >
+            <h1>Quizzis</h1>
+          </span>
+          <p
+            style={{
+              marginTop: '-35px'
+            }}
+          >
+            Platform Quiz Pendidikan Agama Islam dengan AI
+          </p>
+        </div>
         <div style={{ marginTop: '25px' }}>
+          
           <h3 style={{ marginBottom: '10px' }}>Materi:</h3>
-          <div style={{ display: 'grid', gap: '10px' }}>
-            {materiList.map(m => (
-              <button
-                key={m}
-                onClick={() => setTopic(m)}
-                style={{
-                  padding: '12px',
-                  textAlign: 'left',
-                  backgroundColor: topic === m ? '#4f46e5' : '#1f2937',
-                  border: topic === m ? '2px solid #60a5fa' : '1px solid #374151',
-                  color: 'white',
-                  borderRadius: '6px',
-                  cursor: 'pointer'
-                }}
-              >{m}</button>
+          <select
+            value={topic}
+            onChange={(e) => setTopic(e.target.value)}
+            style={{
+              width: '100%',
+              padding: '12px',
+              backgroundColor: '#d9ead3',
+              color: '#000000',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              fontSize: '1rem',
+              outline: 'none',
+              border: '4px solid #FFFFFF',
+            }}
+          >
+            <option 
+              value="" 
+              disabled
+              style={{color: '#000000' }}
+            >
+              Silahkan Pilih Materi
+            </option>
+            {materiList.map((m) => (
+              <option key={m} value={m} style={{ backgroundColor: '#FFFFFF', color: '#000000' }}>
+                {m}
+              </option>
             ))}
-          </div>
+          </select>
+
           <div style={{ marginTop: '25px' }}>
             <h3 style={{ marginBottom: '10px' }}>Jumlah Pertanyaan:</h3>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
@@ -141,8 +177,8 @@ const Quiz: React.FC = () => {
                   onClick={() => { setQuestionCount(c); setCustomCount(''); }}
                   style={{
                     padding: '10px 16px',
-                    backgroundColor: (customCount === '' && questionCount === c) ? '#4f46e5' : '#1f2937',
-                    border: (customCount === '' && questionCount === c) ? '2px solid #60a5fa' : '1px solid #374151',
+                    backgroundColor: (customCount === '' && questionCount === c) ? '#419423' : '#71b05b',
+                    border: (customCount === '' && questionCount === c) ? '2px solid #419423' : '1px solid #71b05b',
                     color: 'white',
                     borderRadius: '6px',
                     cursor: 'pointer'
@@ -151,16 +187,18 @@ const Quiz: React.FC = () => {
               ))}
               <input
                 type="number"
-                placeholder="Custom"
+                placeholder="?"
                 value={customCount}
                 onChange={(e) => setCustomCount(e.target.value)}
                 style={{
-                  width: '90px',
+                  width: '33px',
                   padding: '10px',
-                  backgroundColor: '#111827',
-                  border: '1px solid #4f46e5',
+                  backgroundColor: '#71b05b',
+                  border: '1px solid #71b05b',
                   color: 'white',
-                  borderRadius: '6px'
+                  fontSize: '1.2rem',
+                  borderRadius: '6px',
+                  textAlign: 'center'
                 }}
               />
             </div>
@@ -188,20 +226,26 @@ const Quiz: React.FC = () => {
           </div>
           <div style={{ 
             height: '8px', 
-            backgroundColor: '#374151', 
+            backgroundColor: '#deedda', 
             borderRadius: '4px',
             overflow: 'hidden',
           }}>
             <div style={{ 
               height: '100%', 
               width: `${progress}%`, 
-              backgroundColor: '#4f46e5',
+              backgroundColor: '#419423',
               transition: 'width 0.3s ease',
             }} />
           </div>
         </div>
 
-        <h2>{currentQuestion.question}</h2>
+        <h2
+          style={{
+            color: '#000000'
+          }}
+        >
+          {currentQuestion.question}
+        </h2>
 
         <div style={{ marginTop: '30px' }}>
           {currentQuestion.options.map((option, index) => (
@@ -213,12 +257,13 @@ const Quiz: React.FC = () => {
                 padding: '15px',
                 marginBottom: '10px',
                 textAlign: 'left',
-                backgroundColor: selectedAnswer === option ? '#4f46e5' : '#1f2937',
-                border: selectedAnswer === option ? '2px solid #60a5fa' : '1px solid #374151',
+                backgroundColor: selectedAnswer === option ? '#419423' : '#71b05b',
+                border: selectedAnswer === option ? '2px solid #419423' : '1px solid #71b05b',
                 color: 'white',
                 borderRadius: '5px',
                 cursor: 'pointer',
                 transition: 'all 0.2s',
+                boxShadow: selectedAnswer === option ? '0 4px 8px rgba(0, 0, 0, 0.2)' : 'none',
               }}
             >
               {String.fromCharCode(65 + index)}. {option}
@@ -247,7 +292,7 @@ const Quiz: React.FC = () => {
         <div style={{ 
           textAlign: 'center', 
           padding: '40px 20px',
-          backgroundColor: '#1f2937',
+          backgroundColor: '#deedda',
           borderRadius: '10px',
           marginTop: '30px',
         }}>
@@ -255,7 +300,7 @@ const Quiz: React.FC = () => {
           <p style={{ fontSize: '24px', marginBottom: '30px' }}>
             {score.correct} dari {score.total} benar
           </p>
-          {score.percentage >= 80 && <p style={{ color: '#10b981' }}>🎉 Luar biasa!</p>}
+          {score.percentage >= 80 && <p style={{ color: '#000000' }}>🎉 Luar biasa!</p>}
           {score.percentage >= 60 && score.percentage < 80 && <p style={{ color: '#60a5fa' }}>👍 Bagus!</p>}
           {score.percentage < 60 && <p style={{ color: '#f59e0b' }}>💪 Terus belajar!</p>}
         </div>
@@ -268,13 +313,13 @@ const Quiz: React.FC = () => {
               style={{
                 padding: '15px',
                 marginTop: '15px',
-                backgroundColor: '#1f2937',
+                backgroundColor: '#deedda',
                 borderRadius: '5px',
                 borderLeft: `4px solid ${userAnswers[index] === question.correct_answer ? '#10b981' : '#ef4444'}`,
               }}
             >
               <p><strong>Q{index + 1}:</strong> {question.question}</p>
-              <p style={{ color: '#9ca3af', marginTop: '5px' }}>
+              <p style={{ color: '#333333', marginTop: '5px' }}>
                 Jawaban Anda: <span style={{ 
                   color: userAnswers[index] === question.correct_answer ? '#10b981' : '#ef4444' 
                 }}>
