@@ -122,4 +122,5 @@ input[type="number"] {
 
 input::placeholder {
     text-align: center;
+    color: #FFFFFF;
 }
